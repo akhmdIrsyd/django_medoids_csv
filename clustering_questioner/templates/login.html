@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>QCluster</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> -->
+    <link rel="stylesheet" href="/media/ext/bootstrap.min.css">
+    <link rel="stylesheet" href="/media/ext/fontawesome.min.css">
+    <link rel="stylesheet" href="/media/ext/style.css">
+    <link rel="stylesheet" href="/media/ext/adminlte.css">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Login</p>
+
+      <form class="form-horizontal form" name="LoginForm"  method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <div class="control-group">
+            <label class="control-label" for="username">Username</label>
+            <div class="controls">
+            <input class="form-control" type="text" id="username" name="username"  placeholder="Username">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+            <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+            </div>
+        </div><br>
+        <div class="control-group">
+            <div class="controls">
+            <button type="submit" class="submit-btn btn btn-primary">Login</button>
+            </div>
+        </div>
+    </form>
+      <!-- /.social-auth-links -->
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+
+<script src="/media/ext/jquery.min.js"></script>
+<script src="/media/ext/popper.min.js"></script>
+<script src="/media/ext/bootstrap.min.js"></script>
+<script src="/media/ext/jquery.loading.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

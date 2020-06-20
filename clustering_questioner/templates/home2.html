@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+    {% block content %}
+          <div class="container-fluid">
+            <h1 class="mt-4">Selemat Datang</h1>
+            <div class="col">
+                  HALAMAN AWAL PENENTUAN FAKTOR TERBESAR FAKTOR TERBESAR SUMBER INFORMASI PEMILIHAN JURUSAN DI FAKULTAS TEKNIK UNIVERSITAS HALU OLEO
+                  </div>
+              <div class="row">
+                  
+
+                   <div class="col-md-6">
+            <!-- PIE CHART -->
+            <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Jurusan</h3>
+
+                
+              </div>
+              <div class="card-body">
+                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col (LEFT) -->
+          <div class="col-md-6">
+            
+           <!-- PIE CHART -->
+            <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Jenis Kelamin</h3>
+
+                
+              </div>
+              <div class="card-body">
+                <canvas id="pieChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            
+
+            
+
+          </div>
+          <!-- /.col (RIGHT) -->
+
+                  </div>
+              </div>
+          
+          
+        <input type="hidden" name="nama_jurusan" value="{{ nama_jurusan }}" />
+        <input type="hidden" name="jml_jurusan" value="{{ jml_jurusan }}" />
+        <input type="hidden" name="nama_JK" value="{{ nama_JK }}" />
+        <input type="hidden" name="jml_JK" value="{{ jml_JK }}" />
+          
+        <!-- /#page-content-wrapper -->
+
+      
+
+
+    {% endblock %}
+
+
+
+
+
+{% block extrascripts %}
+   
+<script>
+    $(function () {
+    var nama_jurusan2 = document.getElementsByName('nama_jurusan')[0].value;
+    var jml_jurusan2 = document.getElementsByName('jml_jurusan')[0].value;
+    var ret = nama_jurusan2.replace('[','');
+    var ret = ret.replace(']','');
+    var ret = ret.replace(/'/g,'');
+    var arr = ret.split(",")
+    jml_jurusan1 = JSON.parse(jml_jurusan2);
+    console.log((arr));
+    console.log((jml_jurusan1));
+    
+    var nama_JK2 = document.getElementsByName('nama_JK')[0].value;
+    var jml_JK2 = document.getElementsByName('jml_JK')[0].value;
+    var ret1 = nama_JK2.replace('[','');
+    var ret1 = ret1.replace(']','');
+    var ret1 = ret1.replace(/'/g,'');
+    var arr1 = ret1.split(",")
+    jml_JK1 = JSON.parse(jml_JK2);
+
+    var donutData        = {
+      labels: arr,
+      datasets: [
+        {
+          data: jml_jurusan1,
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        }
+      ]
+    }
+
+    var JKData        = {
+      labels: arr1,
+      datasets: [
+        {
+          data: jml_JK1,
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        }
+      ]
+    }
+
+
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieData        = donutData;
+    var pieOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    var pieChart = new Chart(pieChartCanvas, {
+      type: 'pie',
+      data: pieData,
+      options: pieOptions      
+    })
+
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
+    var pieData2        = JKData;
+    var pieOptions2     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    var pieChart2 = new Chart(pieChartCanvas2, {
+      type: 'pie',
+      data: pieData2,
+      options: pieOptions      
+    })
+
+    
+  })
+</script>
+{% endblock extrascripts %}
+

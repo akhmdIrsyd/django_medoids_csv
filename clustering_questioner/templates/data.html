@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+    {% block content %}
+          <div class="container-fluid">
+            <h1 class="mt-4">QCluster</h1>
+              <div class="row">
+                
+                  <div class="col">
+                  
+
+
+                  <!-- Create book button -->
+                <div class="col-12 mb-3">
+                {% for row in Upload_data %}
+                  <tr>
+                    <button class="btn btn-primary" type="button" name="button">
+                    <a href="{% url 'update' row.id %}" id = '{{row.id}}'> Upload</a></button>
+                  </tr>
+                {% endfor %}
+                </div>
+                              
+          
+                       <table class="table table-bordered table-hover table-striped">
+                       <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th style="align: center">Nama</th>
+                                <th style="align: center">JK</th>
+                                <th style="align: center">Asal</th>
+                                <th style="align: center">Jurusan</th>
+                                <th style="align: center">Semester</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                             {% include 'data_list.html' %}
+                          </tbody>
+                          
+                      </table>
+                  </div>
+              </div>
+            </div>
+          
+          
+          
+        <!-- /#page-content-wrapper -->
+
+      
+
+
+    {% endblock %}
+
+
+
+
+
+{% block extrascripts %}
+<script src="/media/fungsi/data1.js" ></script>
+<script src="/media/fungsi/data.js" ></script>    
+
+    
+{% endblock extrascripts %}
+

@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+        {% block content %}
+          <div class="container-fluid">
+            <h1 class="mt-4">QCluster</h1>
+              <div class="row">
+                  <div class="col">
+                      <!-- <table class="table table-bordered table-hover table-striped">
+                          <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th style="align: center">Nama</th>
+                                <th style="align: center">JK</th>
+                                <th style="align: center">Asal</th>
+                                <th style="align: center">Jurusan</th>
+                                <th style="align: center">Semester</th>
+                                <th style="align: center">Info</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for ms in mahasiswa %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ ms.1 }}</td>
+                                    <td>{{ ms.2 }}</td>
+                                    <td>{{ ms.3 }}</td>
+                                    <td>{{ ms.4 }}</td>
+                                    <td>{{ ms.5|floatformat }}</td>
+                                    <td>{{ ms.6 }}</td>
+                                </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table> -->
+                  </div>
+              </div>
+          </div>
+          
+          <div class="container">
+            <div class="row">
+              <div style="height:500px;width:100%;">
+                <h1>PLOT</h1>
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              </br>
+              </br>
+              </br>
+              </br>
+              Pusat Cluster:
+              </br>
+                {% for row in rows %}
+                                <tr>
+
+                                    <td>{{ forloop.counter }}</td>,
+                                    <td>{{ row.nama }}</td>,
+                                    <td>{{ row.kelamin }}</td>,
+                                    <td>{{ row.asal }}</td>,
+                                    <td>{{ row.jurusan }}</td>,
+                                    <td>{{ row.semester }}</td>,
+                                    mendapatkan informasi tentang Jurusan dari
+                                    <td>{{ row.info }}</td>,
+                                    Alasan utama anda memilih Jurusan karena
+                                    <td>{{ row.dorogan }}</td>,
+                                    Dorongan untuk anda memilih Jurusan berasal dari
+                                    <td>{{ row.alasan }}</td>,
+                                    pendapat setelah belajar di Jurusan
+                                    <td>{{ row.pendapat }}</td>,
+                                    pendapat tentang peluang kerja Jurusan 
+                                    <td>{{ row.peluang }}</td>
+                                    
+                                  
+                                </tr>
+                                </br>
+                              {% endfor %}
+              
+            </div>
+          </div>
+          <!-- /#page-content-wrapper -->
+          <div>
+
+          </div>
+        <input type="hidden" name="mydata" value="{{ data }}" />
+        <input type="hidden" name="mycluster" value="{{ cluster }}" />
+        <input type="hidden" name="mahasiswa" value="{{ mahasiswa }}" />
+        
+          {% endblock %}
+       
+
+
+      
+{% block extrascripts %}
+<script>
+    $(document).ready(function(){
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+      var dataku = document.getElementsByName('mydata')[0].value;
+      var cluster = document.getElementsByName('mycluster')[0].value;
+      var mahasiswa = document.getElementsByName('mahasiswa')[0].value;
+      dataku = JSON.parse(dataku);
+      cluster = JSON.parse(cluster);
+      // mahasiswa = JSON.parse(mahasiswa);
+      // console.log(typeof(mahasiswa));
+      let data_cluster = {
+        0 : [],
+        1 : [],
+        2 : []
+      };
+      for (let i = 0; i < dataku.length; i++) {
+        z = {
+          x : dataku[i][0],
+          y : dataku[i][1]
+        }
+        data_cluster[cluster[i]].push(z);
+      }
+
+      var ctx = document.getElementById("myChart").getContext('2d');
+
+      // End Defining data
+      var options = {
+        responsive: true, // Instruct chart js to respond nicely.
+        maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+        tooltips: {
+         callbacks: {
+            label: function(tooltipItem, data) {
+              console.log(tooltipItem);
+               var label = tooltipItem.index;
+               return label + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
+            }
+         }
+       }
+      };
+
+      // End Defining data
+      var myChart = new Chart(ctx, {
+          type: 'scatter',
+          data: {
+              datasets: [
+                {
+                  label: '1', // Name the series
+                  data: data_cluster[0], // Specify the data values array
+                  borderColor: '#2196f3', // Add custom color border
+                  backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+                },
+                {
+                  label: '2', // Name the series
+                  data: data_cluster[1], // Specify the data values array
+                  borderColor: '#d92b2b', // Add custom color border
+                  backgroundColor: '#d92b2b', // Add custom color background (Points and Fill)
+                },
+                {
+                  label: '3', // Name the series
+                  data: data_cluster[2], // Specify the data values array
+                  borderColor: '#3fd92b', // Add custom color border
+                  backgroundColor: '#3fd92b', // Add custom color background (Points and Fill)
+                },
+              ]
+          },
+          options: options
+      });
+    });
+</script>
+{% endblock extrascripts %}

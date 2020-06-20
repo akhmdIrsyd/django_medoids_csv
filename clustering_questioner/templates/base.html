@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>QCluster</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> -->
+    <link rel="stylesheet" href="/media/ext/bootstrap.min.css">
+    <link rel="stylesheet" href="/media/ext/fontawesome.min.css">
+    <link rel="stylesheet" href="/media/ext/style.css">
+</head>
+<body>
+
+      <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+        
+          <div class="sidebar-heading"> <a href="{% url 'index2' %}"><strong>QCluster</strong></a> </div>
+          <div class="list-group list-group-flush">
+            <a href="{% url 'index2' %}" class="list-group-item list-group-item-action bg-light ">Dashboard</a>
+            <a href="{% url 'data' %}" class="list-group-item list-group-item-action bg-light ">Data Mahasiswa</a>
+            <a href="{% url 'cluster' %}" class="list-group-item list-group-item-action bg-light ">Clustering</a>
+            <a href="{% url 'visual' %}" class="list-group-item list-group-item-action bg-light ">Visual</a>
+            <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
+            </div>
+          </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+          
+          <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class="navbar-nav ml-auto">
+    
+    <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'logout' %}">log out <span class="sr-only">(current)</span></a>
+                </li>
+  </ul>
+</nav>
+
+        {% block content %}
+
+            {% endblock %}
+        </div>
+        
+
+  </div>
+
+
+      
+
+<script src="/media/ext/jquery.min.js"></script>
+<script src="/media/ext/chart.min.js"></script>
+<script src="/media/ext/popper.min.js"></script>
+<script src="/media/ext/bootstrap.min.js"></script>
+<script src="/media/ext/jquery.loading.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+{% block extrascripts %}
+    
+
+    
+{% endblock extrascripts %}
+
+</body>
+</html>
