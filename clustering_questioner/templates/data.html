@@ -1,33 +1,54 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
     {% block content %}
-          <div class="container-fluid">
-            <h1 class="mt-4">QCluster</h1>
-              <div class="row">
-                
-                  <div class="col">
-                  
+        <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Data</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Data</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-
-                  <!-- Create book button -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+      <div class="card">
+              
+       <div class="card-body">
+         <!-- Create book button -->
                 <div class="col-12 mb-3">
                 {% for row in Upload_data %}
                   <tr>
-                    <button class="btn btn-primary" type="button" name="button">
+                    <button type="button" class="btn btn-outline-primary btn-lg">
                     <a href="{% url 'update' row.id %}" id = '{{row.id}}'> Upload</a></button>
                   </tr>
                 {% endfor %}
-                </div>
-                              
+                </br>
+                     </br>
           
                        <table class="table table-bordered table-hover table-striped">
                        <thead>
                             <tr>
                                 <th>No.</th>
                                 <th style="align: center">Nama</th>
-                                <th style="align: center">JK</th>
-                                <th style="align: center">Asal</th>
                                 <th style="align: center">Jurusan</th>
                                 <th style="align: center">Semester</th>
+                                <th style="align: center">Internet</th>
+                                <th style="align: center">Alumni</th>
+                                <th style="align: center">Media Sosial</th>
+                                <th style="align: center">Beasiswa</th>
+                                <th style="align: center">Kerja</th>
+                                <th style="align: center">Belajar</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -35,16 +56,30 @@
                           </tbody>
                           
                       </table>
-                  </div>
               </div>
-            </div>
-          
-          
-          
-        <!-- /#page-content-wrapper -->
+          </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.2
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 
-      
-
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Add Content Here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
     {% endblock %}
 

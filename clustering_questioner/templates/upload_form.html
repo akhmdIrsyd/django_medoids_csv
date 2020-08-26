@@ -1,11 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
     {% block content %}
+        <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Selemat Datang {{jur}}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-          <div class="container-fluid">
-            <h1 class="mt-4">QCluster</h1>
-              <div class="row">
-                
-                  <div class="col">
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+           <div class="col">
                 {% load widget_tweaks %}  
 <form method="post" action="" enctype="multipart/form-data">
   {% csrf_token %}
@@ -43,6 +60,41 @@
   </div>
 
 </form>
+        </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.2
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+  <input type="hidden" name="nama_jurusan" value="{{ nama_semester }}" />
+        <input type="hidden" name="jml_jurusan" value="{{ jml_semester }}" />
+        <input type="hidden" name="nama_JK" value="{{ nama_JK }}" />
+        <input type="hidden" name="jml_JK" value="{{ jml_JK }}" />
 
-
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Add Content Here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+      
     {% endblock %}
+
+
+
+{% block extrascripts %}
+ 
+{% endblock extrascripts %}
+
+

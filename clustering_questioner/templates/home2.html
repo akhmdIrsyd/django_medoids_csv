@@ -1,33 +1,114 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
     {% block content %}
-          <div class="container-fluid">
-            <h1 class="mt-4">Selemat Datang</h1>
-            <div class="col">
-                  HALAMAN AWAL PENENTUAN FAKTOR TERBESAR FAKTOR TERBESAR SUMBER INFORMASI PEMILIHAN JURUSAN DI FAKULTAS TEKNIK UNIVERSITAS HALU OLEO
-                  </div>
-              <div class="row">
-                  
-
-                   <div class="col-md-6">
-            <!-- PIE CHART -->
-            <div class="card card-danger">
-              <div class="card-header">
-                <h3 class="card-title">Jurusan</h3>
-
-                
-              </div>
-              <div class="card-body">
-                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
+        <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Selemat Datang {{jur}}</h1>
           </div>
-          <!-- /.col (LEFT) -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+      <h5 class="mb-2">Info Box</h5>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total</span>
+                <span class="info-box-number">{{total}}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Sipil</span>
+                <span class="info-box-number">{{ jml_sipil }}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning"><i class="fas fa-drafting-compass"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Arsitekur</span>
+                <span class="info-box-number">{{ jml_arsitek }}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-navy"><i class="fas fa-code"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Informatika</span>
+                <span class="info-box-number">{{jml_it}}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-secondary"><i class="fas fa-cog"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Mesin</span>
+                <span class="info-box-number">{{ jml_mesin }}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-danger"><i class="fas fa-bolt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Elektro</span>
+                <span class="info-box-number">{{ jml_eletro }}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+        <div class="row">
           <div class="col-md-6">
-            
-           <!-- PIE CHART -->
+             <!-- PIE CHART -->
             <div class="card card-danger">
               <div class="card-header">
                 <h3 class="card-title">Jenis Kelamin</h3>
@@ -40,36 +121,67 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            
 
-            
+           
+
+          </div>
+          <!-- /.col (LEFT) -->
+          <div class="col-md-6">
+            <!-- PIE CHART -->
+            <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Semester</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
 
           </div>
           <!-- /.col (RIGHT) -->
-
-                  </div>
-              </div>
-          
-          
-        <input type="hidden" name="nama_jurusan" value="{{ nama_jurusan }}" />
-        <input type="hidden" name="jml_jurusan" value="{{ jml_jurusan }}" />
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.2
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+  <input type="hidden" name="nama_jurusan" value="{{ nama_semester }}" />
+        <input type="hidden" name="jml_jurusan" value="{{ jml_semester }}" />
         <input type="hidden" name="nama_JK" value="{{ nama_JK }}" />
         <input type="hidden" name="jml_JK" value="{{ jml_JK }}" />
-          
-        <!-- /#page-content-wrapper -->
 
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Add Content Here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
       
-
-
     {% endblock %}
 
 
 
-
-
 {% block extrascripts %}
-   
-<script>
+  <script>
     $(function () {
     var nama_jurusan2 = document.getElementsByName('nama_jurusan')[0].value;
     var jml_jurusan2 = document.getElementsByName('jml_jurusan')[0].value;
@@ -123,7 +235,7 @@
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
     var pieChart = new Chart(pieChartCanvas, {
-      type: 'pie',
+      type: 'doughnut',
       data: pieData,
       options: pieOptions      
     })
@@ -141,7 +253,7 @@
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
     var pieChart2 = new Chart(pieChartCanvas2, {
-      type: 'pie',
+      type: 'doughnut',
       data: pieData2,
       options: pieOptions      
     })
@@ -150,4 +262,5 @@
   })
 </script>
 {% endblock extrascripts %}
+
 
